@@ -31,3 +31,11 @@ function prevSlide(){
         elLast.classList.add("slider__el--show");
     }
 }
+
+document.addEventListener("keydown", function(event){
+    if(event.code == "ArrowLeft"){
+        prevSlide();
+    } else if(event.code == "ArrowRight"){
+        nextSlide();
+    }
+});
