@@ -1,0 +1,76 @@
+body{
+    height: 8000px;
+    margin: 0;
+    /* pour simuler le scroll */
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.tab__nav {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.tab__el a{
+    padding: 10px;
+    display: block;
+}
+.tab__container{
+    background-color: rgb(209, 209, 209);
+}
+
+.tab__content {
+    padding: 10px;
+    /*display: none;*/
+}
+.tab__content--active{
+    /*display: block;*/
+}
+.tab__el--active{
+    background-color: white;
+    color: blue;
+    background-color: rgb(209, 209, 209);
+}
+.tab--a{
+    .tab__container{
+        position: relative;
+        overflow: hidden;
+        transition: height 0.3s ease;
+    }
+    .tab__content{
+        position: absolute;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .tab__content--active{
+        opacity: 1;
+        pointer-events: all;
+    }
+}
+
+.tab--b{
+    .tab__container{
+        position: relative;
+        overflow: hidden;
+        transition: height 0.3s ease;
+    }
+    .tab__content{
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: transform 0.3s ease;
+    }
+
+    .tab__content--active ~ .tab__content{
+        transform: translateX(100%);
+    }
+
+    :has(~ .tab__content--active){
+        transform: translateX(-100%);
+    }
+}
